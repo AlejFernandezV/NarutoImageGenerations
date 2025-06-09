@@ -1,12 +1,9 @@
 from PIL import Image
-from diffusers import StableDiffusionPipeline, DPMSolverMultistepScheduler
-import torch
+from diffusers import DiffusionPipeline
 
-pipe = StableDiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float32)
-pipe = pipe.to("cpu")
-pipe.load_lora_weights("./checkpoint-7700")
+pipe = DiffusionPipeline.from_pretrained("stable-diffusion-v1-5/stable-diffusion-v1-5").to("cuda")
+pipe.load_lora_weights("AlejFernandezV/NarutoImageGenerations")
 
-
-def generate_image(prompt: str) -> Image.Image: 
+def generate_image(prompt: str) -> Image.Image:
     img = pipe(prompt).images[0]
     return img
