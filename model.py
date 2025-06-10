@@ -4,7 +4,7 @@ from PIL import Image
 import io
 
 # Reemplaza esta URL con la que te dé ngrok en Colab
-API_URL = "https://1ad3-34-16-184-26.ngrok-free.app/generate"
+API_URL = "https://bbd2-34-13-128-198.ngrok-free.app/generate"
 
 def generate_image(prompt: str) -> Image.Image:
     response = requests.post(API_URL, json={"prompt": prompt})
